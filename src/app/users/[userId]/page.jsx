@@ -1,4 +1,4 @@
-import { getUsersById } from "@/app/lib/data";
+import { getUsersById } from "@/Components/lib/data";
 import React from "react";
 
 const UserDetailsPage = async ({ params }) => {
@@ -8,7 +8,7 @@ const UserDetailsPage = async ({ params }) => {
 
   return (
     <div>
-      <h2>User Details page {user.length}</h2>
+      <h2>User Details page {user.name}</h2>
     </div>
   );
 };
