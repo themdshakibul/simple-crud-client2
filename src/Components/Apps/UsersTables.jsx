@@ -79,7 +79,7 @@ const UsersTables = ({ users, deleteUserAction }) => {
                           </Link>
 
                           {/* Edit */}
-                          <Link href={`/users/edit/${user._id}`}>
+                          <Link href={`/users/${user._id}/edit`}>
                             <Button variant="outline" color="warning" size="sm">
                               Edit
                             </Button>

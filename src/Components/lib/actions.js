@@ -16,6 +16,22 @@ export const createUsers = async (formData) => {
   return data;
 };
 
+const upadteFormData = async (formData) => {
+  "use server";
+  const updateUser = Object.fromEntries(formData.entries());
+
+  const res = await fetch("", {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updateUser),
+  });
+  const data = await res.json();
+  console.log(data);
+
+  // TODO: revalidatePath
+  return data;
+};
+
 export const deleteUser = async (userId) => {
   "use server";
   const res = await fetch(`http://localhost:7007/users/${userId}`, {
