@@ -1,16 +1,25 @@
+import { upadteFormData } from "@/Components/lib/actions";
 import { getUsersById } from "@/Components/lib/data";
 import { Button, Input, Label, Modal, TextField } from "@heroui/react";
 import { use } from "react";
 
-const EditPage = async ({ params }) => {
+const UserEditPage = async ({ params }) => {
   const { userId } = await params;
   const user = await getUsersById(userId);
+
+  const updateUserWraper = async (formData) => {
+    "use server";
+    return upadteFormData(userId, formData);
+  };
 
   return (
     <div>
       <h2>Editing User: </h2>
       <div>
-        <form className="w-1/3 mx-auto space-y-5 bg-slate-200 p-5 rounded-2xl">
+        <form
+          action={updateUserWraper}
+          className="w-1/3 mx-auto space-y-5 bg-slate-200 p-5 rounded-2xl"
+        >
           <TextField
             className="w-full"
             name="name"
@@ -32,7 +41,7 @@ const EditPage = async ({ params }) => {
           <TextField
             className="w-full"
             name="role"
-            defaultValue={user.role}
+            defaultValue={user?.role}
             type="text"
           >
             <Label>Role</Label>
@@ -52,4 +61,4 @@ const EditPage = async ({ params }) => {
   );
 };
 
-export default EditPage;
+export default UserEditPage;
